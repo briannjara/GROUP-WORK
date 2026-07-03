@@ -6,7 +6,21 @@
 python -m pip install -r requirements.txt
 ```
 
-## 2. Seed the database
+## 2. Configure environment variables
+
+Create a `.env` file in the `backend/` directory with your PostgreSQL connection string:
+
+```env
+DATABASE_URL=postgresql://postgres:password@localhost:5432/lab_portal
+```
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `DATABASE_URL` | Yes | SQLAlchemy connection URL for PostgreSQL. Replace `postgres`, `password`, `localhost`, `5432`, and `lab_portal` with your username, password, host, port, and database name. |
+
+The app loads this file from `backend/.env` when you run the seed script or start the server. If `DATABASE_URL` is missing, startup fails with a clear error.
+
+## 3. Seed the database
 
 This creates the required database tables and inserts the initial data.
 
@@ -20,7 +34,7 @@ If successful, you should see something similar to:
 Skipping seed: 2 lab template(s) already exist.
 ```
 
-## 3. Start the development server
+## 4. Start the development server
 
 Run the FastAPI server with auto-reload enabled:
 
